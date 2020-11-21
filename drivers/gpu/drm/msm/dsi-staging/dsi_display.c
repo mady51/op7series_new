@@ -2869,7 +2869,7 @@ error:
 	return rc;
 }
 
-static int dsi_display_set_clk_src(struct dsi_display *display)
+static int dsi_display_set_clk_src(struct dsi_display *display, bool on)
 {
 	int rc = 0;
 	int i;
@@ -7300,7 +7300,7 @@ static int dsi_display_pre_switch(struct dsi_display *display)
 		goto error_ctrl_clk_off;
 	}
 
-	rc = dsi_display_set_clk_src(display);
+	rc = dsi_display_set_clk_src(display, true);
 	if (rc) {
 		pr_err("[%s] failed to set DSI link clock source, rc=%d\n",
 			display->name, rc);
@@ -7693,7 +7693,7 @@ int dsi_display_prepare(struct dsi_display *display)
 		}
 	}
 
-	rc = dsi_display_set_clk_src(display);
+	rc = dsi_display_set_clk_src(display, true);
 	if (rc) {
 		pr_err("[%s] failed to set DSI link clock source, rc=%d\n",
 			display->name, rc);
