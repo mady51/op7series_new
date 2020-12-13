@@ -780,7 +780,7 @@ static int aw8697_haptic_set_bst_peak_cur(struct aw8697 *aw8697, unsigned char p
 
 static unsigned char aw8697_haptic_set_level(struct aw8697 *aw8697, int gain)
 {
-    int val = 80;
+    int val = 100;
 
     val = aw8697->level * gain / 3;
     if (val > 255)
